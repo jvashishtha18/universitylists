@@ -1,0 +1,64 @@
+<section *ngIf="university_response">
+	<!-- search section -->
+	<div class="row search-section mb-lg-4">
+		<div class="col-8 d-block d-md-flex py-2 h-100">
+			<div class="university-search" id="landing-search">
+				<input (ngModelChange)="handleSearchInput($event)" [(ngModel)]="query" placeholder="Explore Country"
+					type="text" />
+				<img class="close" *ngIf="query!==''" (click)="clearSearchBar()" src="assets/images/close-tag.svg" />
+			</div>
+		</div>
+		<div class="col-4 d-block d-md-flex py-2 h-100">
+			<div class="country-selected">
+				<ng-multiselect-dropdown name="durationSelected" [settings]="dropdownSettings"
+					[placeholder]="'select country'" [data]="countryData" [(ngModel)]="country"
+					(onSelect)="selectCountry($event)" (onDeSelect)="onItemDeSelect($event)">
+				</ng-multiselect-dropdown>
+			</div>
+		</div>
+	</div>
+	<!-- table section -->
+	<div class="table-section">
+		<table class="table table-bordered table-responsive">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Country</th>
+					<th scope="col-2">Country Code</th>
+					<th scope="col">Website</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let university of $any(university_response|slice:(page-1)*pageSize:page*pageSize)">
+					<!-- <tr *ngFor="let university of university_response"> -->
+					<td>{{university?.name}}</td>
+					<td>{{university?.country}}</td>
+					<td>{{university?.alpha_two_code}}</td>
+					<td>
+						<div *ngFor="let website of university?.web_pages">{{website}}</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- pagination section -->
+	<footer class="pagination-section d-flex justify-content-between">
+		<nav aria-label="Page navigation">
+			<ul class="navlinks">
+				<li (click)="page=1" [ngClass]="page==1?'disabled':''"> First</li>
+				<li (click)="goToPrev()">
+					< Prev </li>
+						<span>{{ page }}</span>
+
+				<li (click)="goToNext()" [ngClass]="page==totlaPages?'disabled':''"> Next ></li>
+				<li (click)="page=totlaPages"> Last</li>
+			</ul>
+		</nav>
+		<select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshUniversity()">
+			<option [ngValue]="4">4 items per page</option>
+			<option [ngValue]="8">8 items per page</option>
+			<option [ngValue]="16">16 items per page</option>
+			<option [ngValue]="24">24 items per page</option>
+		</select>
+	</footer>
+</section>

@@ -1,0 +1,28 @@
+@import "/node_modules/bootstrap/scss/functions";
+@import "/node_modules/bootstrap/scss/variables";
+@import "/node_modules/bootstrap/scss/mixins/breakpoints";
+
+//  Colors
+$white: #fff;
+$black: #2c2c2c;
+$grey: #6c6c6c;
+$dark-grey: #6f8088;
+$light-grey: #b2b3bc;
+$blue: #0b457f;
+$dark-blue: #042f5b;
+$off-white: #fcfcfc;
+$background: #f2f2f2;
+$light-background: #f8f8f8;
+$border: #dadada;
+$border-light: #efecec;
+$disabled: #d3d3d3;;
+$disabled-inpt-background: #d9d9d9;
+$toaster-green: #1d8006;
+$toaster-red: #bd0505;
+
+//  Styles
+$font-family: "Epilogue", sans-serif;
+$font-normal: 400;
+$font-bold: 500;
+$font-extra-bold: 600;
+$font-size: 1rem;

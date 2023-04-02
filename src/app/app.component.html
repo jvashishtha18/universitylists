@@ -1,0 +1,9 @@
+<section class="my-lg-5">
+	<h3 class="text-center">List of Universities</h3>
+	<app-home></app-home>
+	<!-- loader component -->
+	<app-loader *ngIf="loader"></app-loader>
+	<!-- toaster component -->
+	<app-toaster *ngIf="show_toast" [props]="toast_props"></app-toaster>
+	
+</section>
